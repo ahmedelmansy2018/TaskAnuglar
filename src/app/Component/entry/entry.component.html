@@ -1,0 +1,120 @@
+<div class="container">  
+
+    
+      <form [formGroup]="entryForm"(ngSubmit)="onFormSubmit()"> 
+        <div class="card">
+          <div class="card-header text-center">Entry</div>
+          <div class="card-body"> 
+              <table>
+                
+                <tr>  
+                  <td >  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="NumSystem" matTooltip="Enter Num System" matInput placeholder="Num System">  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!entryForm.get('NumSystem').value && entryForm.get('NumSystem').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <td >  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="NameShort" matTooltip="Enter Name Short" matInput placeholder="Name Short">  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!entryForm.get('NameShort').value && entryForm.get('NameShort').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <td >  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="NumDocument" matTooltip="Num Document" matInput placeholder="Num Document">  
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!entryForm.get('NumDocument').value && entryForm.get('NumDocument').touched"></span>  
+                    </mat-error>  
+                  </td>  
+                  <tr>  
+                   
+<td >  
+                      <mat-form-field  class="demo-full-width">  
+                        
+                          <mat-label>Select Type Entry</mat-label>
+                          <mat-select formControlName="Type">
+                            <mat-option>None</mat-option>
+                            <mat-option value="EntryDay">EntryDay </mat-option>
+                            <mat-option value="EntryMonth">EntryMonth</mat-option>
+                            <mat-option value="EntryYears">EntryYears </mat-option>
+                          </mat-select>
+                        
+                      </mat-form-field>  
+                      
+                      <mat-error>  
+                        <span *ngIf="!entryForm.get('Uploadfile').value && entryForm.get('Uploadfile').touched"></span>  
+                      </mat-error>  
+                    </td>
+
+
+                    <td >  
+                      <mat-form-field class="demo-full-width">  
+                        <input matInput [matDatepicker]="picker"matTooltip="Enter Date " formControlName="Date"placeholder="Choose Date ">  
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>  
+                        <mat-datepicker #picker></mat-datepicker>  
+                      </mat-form-field>  
+                      <mat-error>  
+                        <span *ngIf="!entryForm.get('Date').value && entryForm.get('Date').touched"></span>  
+                      </mat-error>  
+                    </td>  
+                    <td > 
+                      <input  formControlName="Uploadfile" type="file"> 
+                      <!-- <mat-form-field class="demo-full-width">  
+                        <input    formControlName="Uploadfile" matTooltip="Enter Uploadfile" matInput placeholder="Uploadfile">  
+                      </mat-form-field>   -->
+                      <mat-error>  
+                        <span *ngIf="!entryForm.get('Uploadfile').value && entryForm.get('Uploadfile').touched"></span>  
+                      </mat-error>  
+                    </td>  
+                  </tr>
+                  <tr>
+                      
+                   <td  >  
+                    <mat-form-field >  
+                      <textarea rows="3" formControlName="description" matTooltip="Enterdescription" matInput placeholder="description">  </textarea>
+                    </mat-form-field>  
+                    <mat-error>  
+                      <span *ngIf="!entryForm.get('description').value && entryForm.get('description').touched"></span>  
+                    </mat-error>  
+                  </td> 
+                  </tr>
+                   <tr>  
+                  <td></td>  
+                  <td>  
+                    <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button">Submit</button>      
+                   <button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+                  </td>  
+                  <td>  
+                    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                      {{massage}}  
+                    </p>  
+                  </td> 
+                  <td></td> 
+                  <td> 
+                    sub:<span  style=" border-color:rgb(81, 255, 0); border-style:solid;" >
+                    {{totalCreditor-totalsDebit}}</span>
+                   
+                   <label>totalCreditor</label><span  style=" border-color:rgb(0, 60, 255); border-style:solid;" >
+                       {{totalCreditor}}</span>
+    
+                       
+                       totalsDebit: <span  style=" border-color:red; border-style:solid;" >{{totalsDebit}}</span>
+
+                  </td>
+                   </tr>  
+                  
+              </table>  
+    
+      </div>
+        </div>
+      </form>  
+     
+  
+  </div>
+

@@ -1,0 +1,76 @@
+
+<app-entry [totalCreditor]='totalCreditor'[totalsDebit]='totalsDebit'></app-entry>
+<div class="container">
+    <form  [formGroup]="addmore">
+      <div class="card">
+        <div class="card-header text-center">Detials Entry</div>
+        <div class="card-body">
+
+                        <div class="row">
+                      <div class="col-sm-12 table-responsive" formArrayName="itemRows">
+                        <table class="table">
+                          <thead>
+                            <tr><td> <button type="button" (click)="addNewRow()" class="btnbtn-primary"> <i class="fa fa-plus-circle" aria-hidden="true"></i></button></td></tr>
+
+                            <tr>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center"><span class="required-field"></span>Seller </th>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center">descripition  </th>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center">AcountNum</th>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center">AcountName</th>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center">Creditor</th>
+                              <th style="white-space: nowrap;padding-right: 4em;float:center">Debit</th>
+
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let itemrow of addmore.controls.itemRows['controls']; let i=index"  [formGroupName]="i">
+    
+                              <td style="white-space: nowrap;"> <input  id="Seller{{i}}" formControlName="Seller" class="form-control"></td>
+                             <!-- <td style="white-space: nowrap;"> <input readonly id="learn{{i}}" formControlName="learn" class="form-control"></td> -->
+                              <!-- <td> <input formControlName="bf_stock" readonly id="bfStock{{i}}" class="form-control reset"></td> -->
+                               <td> <input   id="descripition{{i}}" formControlName="descripition" class="form-control reset"></td>
+                            
+                              
+                               <td> 
+                                 <app-automappnum>
+                                   
+                                 </app-automappnum>
+                               </td>
+
+                               <td> <div  [formGroup]="formGroup" > 
+                                <mat-form-field>
+                                   <mat-label>
+                                    Name
+                                   </mat-label>
+                                   <input formControlName="Name" matInput type="text" [matAutocomplete]="auto" />
+                                   <mat-autocomplete #auto="matAutocomplete">
+                                     <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                                       {{item}}
+                                     </mat-option>
+                                   </mat-autocomplete>
+                                 </mat-form-field>
+                              
+                               </div></td>
+
+                              <td> <input   type="text"  (ngModelChange)="onTextChange($event)"  formControlName="Creditor"  class="form-control reset"></td>
+                              <td> <input style=" border-style:solid;"  type="text"  (ngModelChange)="onTextChange2($event)" formControlName="Debit"  class="form-control reset"></td>
+
+                              <td> <button (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td>
+                            </tr>
+                          </tbody>
+                         
+                        </table>
+                    </div>
+    
+                  </div>
+                 
+    
+        </div>
+       
+      </div>
+    </form>
+
+    
+  
+</div>
